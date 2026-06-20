@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Menu, X, Globe, Moon, Sun } from 'lucide-react'
 import { useTheme } from '@/components/providers/theme-provider'
 
@@ -11,7 +12,13 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedLang, setSelectedLang] = useState('English')
   const [mounted, setMounted] = useState(false)
-  const themeContext = mounted ? useTheme() : { isDark: false, toggleTheme: () => {} }
+  let themeContext = { isDark: false, toggleTheme: () => {} }
+  
+  try {
+    themeContext = useTheme()
+  } catch (e) {
+    // Theme provider not available yet
+  }
 
   useEffect(() => {
     setMounted(true)
@@ -23,9 +30,13 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg">
-              S
-            </div>
+            <Image
+              src="/shewise-logo.png"
+              alt="SheWise Logo"
+              width={32}
+              height={32}
+              className="rounded-full"
+            />
             <span className="text-xl font-semibold text-foreground hidden sm:inline group-hover:text-primary transition-colors">
               SheWise
             </span>
@@ -66,17 +77,19 @@ export default function Header() {
             </div>
 
             {/* Dark Mode Toggle */}
-            <button
-              onClick={themeContext.toggleTheme}
-              className="p-2 hover:bg-muted rounded-lg transition-colors"
-              aria-label="Toggle dark mode"
-            >
-              {themeContext.isDark ? (
-                <Sun className="w-5 h-5 text-foreground" />
-              ) : (
-                <Moon className="w-5 h-5 text-foreground" />
-              )}
-            </button>
+            {mounted && (
+              <button
+                onClick={() => themeContext.toggleTheme()}
+                className="p-2 hover:bg-muted rounded-lg transition-colors"
+                aria-label="Toggle dark mode"
+              >
+                {themeContext.isDark ? (
+                  <Sun className="w-5 h-5 text-foreground" />
+                ) : (
+                  <Moon className="w-5 h-5 text-foreground" />
+                )}
+              </button>
+            )}
 
             {/* Privacy Badge */}
             <div className="hidden sm:flex items-center gap-1 px-3 py-1 bg-accent/10 rounded-full border border-accent/30">

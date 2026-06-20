@@ -33,10 +33,34 @@ export default function TrackerPage() {
     mood: 5,
     weight: '',
   })
+  const [chartData, setChartData] = useState(CHART_DATA)
+  const [successMessage, setSuccessMessage] = useState('')
 
   const handleAddEntry = (type: string) => {
-    // Mock function for adding entries
-    console.log(`Added ${type} entry:`, entries[type as keyof typeof entries])
+    const value = entries[type as keyof typeof entries]
+    if (!value) {
+      alert('Please fill in a value for this entry')
+      return
+    }
+
+    // Update chart data with today's entry
+    const today = new Date().toLocaleDateString('en-US', { weekday: 'short' })
+    const updatedData = [...chartData]
+    const todayIndex = updatedData.length - 1
+    
+    if (type === 'cycle') {
+      updatedData[todayIndex] = { ...updatedData[todayIndex], cycle: parseInt(value as string) }
+    } else if (type === 'sleep') {
+      updatedData[todayIndex] = { ...updatedData[todayIndex], sleep: parseFloat(value as string) }
+    } else if (type === 'mood') {
+      updatedData[todayIndex] = { ...updatedData[todayIndex], mood: Number(entries.mood) }
+    } else if (type === 'weight') {
+      updatedData[todayIndex] = { ...updatedData[todayIndex], weight: parseFloat(value as string) }
+    }
+    
+    setChartData(updatedData)
+    setSuccessMessage(`${type.charAt(0).toUpperCase() + type.slice(1)} entry added successfully!`)
+    setTimeout(() => setSuccessMessage(''), 3000)
   }
 
   const tabs = [
@@ -47,10 +71,19 @@ export default function TrackerPage() {
   ]
 
   return (
-    <main className="min-h-screen flex flex-col bg-background">
+    <main className="min-h-screen flex flex-col bg-background relative">
+      {/* Background illustration */}
+      <div className="fixed inset-0 -z-10 opacity-20 pointer-events-none">
+        <img
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/e5bdea24a860c1c67cab127bd7383eec-cHNP6SNtokfcCzJaThG1rWh5vFZBcu.jpg"
+          alt="Background"
+          className="w-full h-full object-cover object-bottom"
+        />
+      </div>
+      
       <Header />
 
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 flex-1">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 flex-1 relative z-10">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">Health Tracker</h1>
           <p className="text-muted-foreground mb-12">
@@ -80,6 +113,11 @@ export default function TrackerPage() {
               {/* Quick Entry Card */}
               <div className="bg-card border border-border rounded-xl p-8">
                 <h2 className="text-xl font-semibold text-foreground mb-6">Quick Entry - Today</h2>
+                {successMessage && (
+                  <div className="mb-6 p-4 bg-primary/10 border border-primary/20 rounded-lg">
+                    <p className="text-primary font-medium">{successMessage}</p>
+                  </div>
+                )}
                 <div className="space-y-4 mb-6">
                   {activeTab === 'cycle' && (
                     <div>
@@ -166,7 +204,7 @@ export default function TrackerPage() {
                 <div className="h-80 w-full">
                   <ResponsiveContainer width="100%" height="100%">
                     {activeTab === 'mood' ? (
-                      <AreaChart data={CHART_DATA}>
+                      <AreaChart data={chartData}>
                         <defs>
                           <linearGradient id="colorMood" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="5%" stopColor="#5B8B6C" stopOpacity={0.3} />
@@ -192,7 +230,7 @@ export default function TrackerPage() {
                         />
                       </AreaChart>
                     ) : (
-                      <LineChart data={CHART_DATA}>
+                      <LineChart data={chartData}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
                         <XAxis dataKey="day" stroke="#6B7280" />
                         <YAxis stroke="#6B7280" />
