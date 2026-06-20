@@ -10,20 +10,20 @@ export default function Home() {
       <Header />
 
       {/* Hero Section with Background Image */}
-      <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        {/* Background illustration */}
-        <div className="absolute inset-0 -z-10 opacity-30">
+      <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden scroll-fade-in">
+        {/* Background illustration with parallax scroll */}
+        <div className="absolute inset-0 -z-10 opacity-40 scroll-parallax">
           <Image
-            src="/background-hero.png"
+            src="/background-hero.jpg"
             alt="Background illustration"
             fill
-            className="object-cover object-center"
+            className="object-contain object-right scale-125"
             priority
           />
         </div>
         
         {/* Gradient overlay for text readability */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/80 via-background/60 to-background/40" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/90 via-background/70 to-background/50" />
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
@@ -61,14 +61,14 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 scroll-fade-in">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground text-center mb-12 scroll-slide-up">
             What SheWise Offers
           </h2>
           <div className="grid md:grid-cols-3 gap-8 perspective">
             {/* Feature 1 */}
-            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 cursor-pointer">
+            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 cursor-pointer scroll-slide-in-left">
               <div className="relative h-48 w-full bg-muted">
                 <Image
                   src="/symptoms.png"
@@ -86,7 +86,7 @@ export default function Home() {
             </div>
 
             {/* Feature 2 */}
-            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 cursor-pointer">
+            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 cursor-pointer scroll-slide-in-center">
               <div className="relative h-48 w-full bg-muted">
                 <Image
                   src="/tracking.png"
@@ -104,7 +104,7 @@ export default function Home() {
             </div>
 
             {/* Feature 3 */}
-            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 cursor-pointer">
+            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 cursor-pointer scroll-slide-in-right">
               <div className="relative h-48 w-full bg-muted">
                 <Image
                   src="/support.png"
@@ -125,23 +125,23 @@ export default function Home() {
       </section>
 
       {/* Why Choose SheWise Section */}
-      <section className="bg-primary/5 py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <section className="bg-primary/5 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 scroll-fade-in">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground text-center mb-12 scroll-slide-up">
             Why Choose SheWise
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            <div className="text-center bg-card rounded-xl p-8 border border-border/50">
+            <div className="text-center bg-card rounded-xl p-8 border border-border/50 scroll-slide-in-left">
               <div className="text-3xl mb-3">🔒</div>
               <h3 className="text-lg font-semibold text-foreground mb-2">Privacy First</h3>
               <p className="text-muted-foreground text-sm">Your health data is yours alone. We prioritize your privacy with end-to-end protection.</p>
             </div>
-            <div className="text-center bg-card rounded-xl p-8 border border-border/50">
+            <div className="text-center bg-card rounded-xl p-8 border border-border/50 scroll-slide-in-center">
               <div className="text-3xl mb-3">✓</div>
               <h3 className="text-lg font-semibold text-foreground mb-2">Evidence-Based</h3>
               <p className="text-muted-foreground text-sm">All information is backed by medical research and verified health sources.</p>
             </div>
-            <div className="text-center bg-card rounded-xl p-8 border border-border/50">
+            <div className="text-center bg-card rounded-xl p-8 border border-border/50 scroll-slide-in-right">
               <div className="text-3xl mb-3">💚</div>
               <h3 className="text-lg font-semibold text-foreground mb-2">Non-Judgmental</h3>
               <p className="text-muted-foreground text-sm">A safe space to explore your health questions without stigma or judgment.</p>
@@ -151,8 +151,8 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl border border-primary/20 p-12 text-center">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 scroll-fade-in">
+        <div className="max-w-2xl mx-auto bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl border border-primary/20 p-12 text-center scroll-zoom-in">
           <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
             Ready to take control of your health?
           </h2>
