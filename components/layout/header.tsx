@@ -30,13 +30,9 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <Image
-              src="/shewise-logo.png"
-              alt="SheWise Logo"
-              width={32}
-              height={32}
-              className="rounded-full"
-            />
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-sm shadow-md">
+              ♀
+            </div>
             <span className="text-xl font-semibold text-foreground hidden sm:inline group-hover:text-primary transition-colors">
               SheWise
             </span>
