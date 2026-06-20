@@ -9,9 +9,23 @@ export default function Home() {
     <main className="min-h-screen flex flex-col bg-background">
       <Header />
 
-      {/* Hero Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Hero Section with Background Image */}
+      <section className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background illustration */}
+        <div className="absolute inset-0 -z-10 opacity-30">
+          <Image
+            src="/background-hero.png"
+            alt="Background illustration"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </div>
+        
+        {/* Gradient overlay for text readability */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/80 via-background/60 to-background/40" />
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
             Your <span className="text-primary">Personal Guide</span> to Women&apos;s Health
           </h1>
@@ -52,9 +66,9 @@ export default function Home() {
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground text-center mb-12">
             What SheWise Offers
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 perspective">
             {/* Feature 1 */}
-            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 cursor-pointer">
               <div className="relative h-48 w-full bg-muted">
                 <Image
                   src="/symptoms.png"
@@ -72,7 +86,7 @@ export default function Home() {
             </div>
 
             {/* Feature 2 */}
-            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 cursor-pointer">
               <div className="relative h-48 w-full bg-muted">
                 <Image
                   src="/tracking.png"
@@ -90,7 +104,7 @@ export default function Home() {
             </div>
 
             {/* Feature 3 */}
-            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 cursor-pointer">
               <div className="relative h-48 w-full bg-muted">
                 <Image
                   src="/support.png"

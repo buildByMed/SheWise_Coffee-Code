@@ -171,3 +171,56 @@
     @apply font-sans;
   }
 }
+
+/* Interactive and immersive effects */
+@layer components {
+  /* Hover effect for links */
+  a {
+    @apply transition-transform duration-300 ease-out;
+  }
+  
+  a:hover {
+    @apply scale-105;
+    transform: scale(1.05) translateZ(10px);
+  }
+  
+  /* Interactive buttons and clickable elements */
+  button, [role="button"] {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  button:hover, [role="button"]:hover {
+    @apply scale-105;
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 10px 20px rgba(192, 138, 158, 0.15);
+  }
+  
+  button:active {
+    @apply scale-95;
+    transform: scale(0.95) translateY(0px);
+  }
+  
+  /* Image hover effect */
+  img {
+    @apply transition-transform duration-300 ease-out;
+  }
+  
+  img:hover {
+    @apply scale-105;
+    transform: scale(1.05) perspective(1000px) rotateZ(2deg);
+  }
+  
+  /* Card hover effects with 3D depth */
+  .hover\:shadow-md:hover, [class*="rounded-"]:hover {
+    @apply transition-all duration-300;
+  }
+  
+  /* Perspective container for 3D effects */
+  .perspective {
+    perspective: 1000px;
+  }
+  
+  .transform-gpu {
+    transform: translateZ(0);
+  }
+}
