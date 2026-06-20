@@ -15,14 +15,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setMounted(true)
-    // Get theme from localStorage or default to light mode
-    const saved = localStorage.getItem('theme')
-    if (saved) {
-      setIsDark(saved === 'dark')
-      if (saved === 'dark') {
-        document.documentElement.classList.add('dark')
-      }
-    }
+    // Force light mode as default for SheWise
+    document.documentElement.classList.remove('dark')
+    localStorage.setItem('theme', 'light')
+    setIsDark(false)
   }, [])
 
   const toggleTheme = () => {
