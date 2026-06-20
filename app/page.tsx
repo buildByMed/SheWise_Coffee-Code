@@ -110,21 +110,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Statistics Section */}
-      <section className="bg-muted/30 py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      {/* Why Choose SheWise Section */}
+      <section className="bg-primary/5 py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground text-center mb-12">
+            Why Choose SheWise
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            <div className="text-center">
-              <p className="text-4xl sm:text-5xl font-bold text-primary mb-2">100K+</p>
-              <p className="text-muted-foreground">Women empowered</p>
+            <div className="text-center bg-card rounded-xl p-8 border border-border/50">
+              <div className="text-3xl mb-3">🔒</div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">Privacy First</h3>
+              <p className="text-muted-foreground text-sm">Your health data is yours alone. We prioritize your privacy with end-to-end protection.</p>
             </div>
-            <div className="text-center">
-              <p className="text-4xl sm:text-5xl font-bold text-secondary mb-2">50+</p>
-              <p className="text-muted-foreground">Symptoms covered</p>
+            <div className="text-center bg-card rounded-xl p-8 border border-border/50">
+              <div className="text-3xl mb-3">✓</div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">Evidence-Based</h3>
+              <p className="text-muted-foreground text-sm">All information is backed by medical research and verified health sources.</p>
             </div>
-            <div className="text-center">
-              <p className="text-4xl sm:text-5xl font-bold text-accent mb-2">24/7</p>
-              <p className="text-muted-foreground">Always available</p>
+            <div className="text-center bg-card rounded-xl p-8 border border-border/50">
+              <div className="text-3xl mb-3">💚</div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">Non-Judgmental</h3>
+              <p className="text-muted-foreground text-sm">A safe space to explore your health questions without stigma or judgment.</p>
             </div>
           </div>
         </div>
