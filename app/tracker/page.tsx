@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 import { Calendar, Plus, MapPin, Search } from 'lucide-react'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 const CHART_DATA = [
   { day: 'Mon', cycle: 3, sleep: 7, mood: 7, weight: 65 },
@@ -27,14 +28,19 @@ const HOSPITALS = [
 export default function TrackerPage() {
   const [activeTab, setActiveTab] = useState('cycle')
   const [searchCity, setSearchCity] = useState('Delhi')
-  const [entries, setEntries] = useState({
+  const [entries, setEntries] = useLocalStorage('shewise_entries', {
     cycle: '',
     sleep: '',
     mood: 5,
     weight: '',
   })
-  const [chartData, setChartData] = useState(CHART_DATA)
+  const [chartData, setChartData] = useLocalStorage('shewise_health_logs', CHART_DATA)
   const [successMessage, setSuccessMessage] = useState('')
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    setIsLoaded(true)
+  }, [])
 
   const handleAddEntry = (type: string) => {
     const value = entries[type as keyof typeof entries]

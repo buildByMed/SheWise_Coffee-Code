@@ -54,6 +54,11 @@ export default function Footer() {
                   Medical Disclaimer
                 </Link>
               </li>
+              <li>
+                <Link href="/data-info" className="text-muted-foreground hover:text-primary transition-colors">
+                  Data Storage
+                </Link>
+              </li>
             </ul>
           </div>
 

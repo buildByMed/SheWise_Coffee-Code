@@ -5,6 +5,7 @@ import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import Link from 'next/link'
 import { ChevronRight, ChevronLeft, Download, Printer } from 'lucide-react'
+import { useLocalStorage } from '@/hooks/useLocalStorage'
 
 const QUESTIONS = [
   {
@@ -54,7 +55,7 @@ interface Answer {
 
 export default function QuestionnairePage() {
   const [currentStep, setCurrentStep] = useState(0)
-  const [answers, setAnswers] = useState<Answer>({})
+  const [answers, setAnswers] = useLocalStorage<Answer>('shewise_questionnaire_answers', {})
   const [showResults, setShowResults] = useState(false)
 
   const handleAnswer = (value: any) => {
