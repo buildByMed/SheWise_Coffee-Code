@@ -1,23 +1,162 @@
-export default function Page() {
+import Header from '@/components/layout/header'
+import Footer from '@/components/layout/footer'
+import Link from 'next/link'
+import { Brain, Activity, Heart } from 'lucide-react'
+import Image from 'next/image'
+
+export default function Home() {
   return (
-    <main className="relative flex min-h-screen items-center justify-center bg-[color:light-dark(#fff,#000)] text-[color:light-dark(#000,#fff)]">
-      <svg
-        aria-hidden="true"
-        className="size-20"
-        fill="none"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-        stroke="currentColor"
-        strokeWidth="0.5"
-      >
-        <path
-          d="M14.2 14.2H17V6.9375C17 4.76288 15.2371 3 13.0625 3H5.8V5.8M14.2 14.2V7.79063L7.79062 14.2H14.2ZM14.2 14.2V17H6.9375C4.76288 17 3 15.2371 3 13.0625V5.8H5.8M5.8 5.8V12.2313L12.2313 5.8H5.8Z"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <p className="absolute left-1/2 top-[calc(50%+56px)] -translate-x-1/2 whitespace-nowrap text-sm font-medium text-muted-foreground">
-        Your v0 generation will show here.
-      </p>
+    <main className="min-h-screen flex flex-col bg-background">
+      <Header />
+
+      {/* Hero Section */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+            Your <span className="text-primary">Personal Guide</span> to Women&apos;s Health
+          </h1>
+          <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Explore symptoms with confidence, track your health journey, and access trusted information designed for you.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/questionnaire"
+              className="px-8 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              Start Symptom Check
+            </Link>
+            <Link
+              href="/tracker"
+              className="px-8 py-3 bg-secondary text-secondary-foreground font-semibold rounded-lg hover:bg-secondary/90 transition-colors"
+            >
+              Health Tracker
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust & Safety Banner */}
+      <section className="bg-accent/5 border-y border-border py-6 px-4">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-center text-sm text-muted-foreground">
+            <strong>⚠️ Medical Disclaimer:</strong> SheWise provides educational information and symptom insights for informational purposes only. 
+            It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider 
+            for any health concerns. In emergencies, please contact your local emergency services.
+          </p>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground text-center mb-12">
+            What SheWise Offers
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Feature 1 */}
+            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+              <div className="relative h-48 w-full bg-muted">
+                <Image
+                  src="/symptoms.png"
+                  alt="Symptom questionnaire illustration"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-foreground mb-3">Symptom Questionnaire</h3>
+                <p className="text-muted-foreground text-sm">
+                  Answer guided questions about your symptoms and receive personalized insights. Our intelligent questionnaire adapts to your responses.
+                </p>
+              </div>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+              <div className="relative h-48 w-full bg-muted">
+                <Image
+                  src="/tracking.png"
+                  alt="Health tracking illustration"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-foreground mb-3">Health Tracker</h3>
+                <p className="text-muted-foreground text-sm">
+                  Log your cycle, sleep, mood, and weight. Visualize patterns with intuitive charts and discover what affects your wellbeing.
+                </p>
+              </div>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="bg-card border border-border rounded-xl overflow-hidden hover:shadow-md transition-shadow">
+              <div className="relative h-48 w-full bg-muted">
+                <Image
+                  src="/support.png"
+                  alt="Supportive chatbot illustration"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-foreground mb-3">Supportive Chat</h3>
+                <p className="text-muted-foreground text-sm">
+                  Chat with our non-judgmental bot about women&apos;s health topics, myths, and concerns. Get answers anytime, anywhere.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Statistics Section */}
+      <section className="bg-muted/30 py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <div className="text-center">
+              <p className="text-4xl sm:text-5xl font-bold text-primary mb-2">100K+</p>
+              <p className="text-muted-foreground">Women empowered</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl sm:text-5xl font-bold text-secondary mb-2">50+</p>
+              <p className="text-muted-foreground">Symptoms covered</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl sm:text-5xl font-bold text-accent mb-2">24/7</p>
+              <p className="text-muted-foreground">Always available</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl mx-auto bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl border border-primary/20 p-12 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">
+            Ready to take control of your health?
+          </h2>
+          <p className="text-muted-foreground mb-8">
+            Start with our symptom questionnaire or begin tracking your health today. Your privacy is our priority.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/questionnaire"
+              className="px-6 py-2 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              Begin Questionnaire
+            </Link>
+            <Link
+              href="/knowledge"
+              className="px-6 py-2 bg-muted text-muted-foreground font-semibold rounded-lg hover:bg-muted/80 transition-colors"
+            >
+              Explore Resources
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </main>
   )
 }
