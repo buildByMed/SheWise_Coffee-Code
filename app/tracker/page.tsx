@@ -16,15 +16,17 @@ const CHART_DATA = [
   { day: 'Sun', cycle: 6, sleep: 8, mood: 8, weight: 64.8 },
 ]
 
-const CLINICS = [
-  { id: 1, name: 'Women\'s Health Center', city: 'New York', rating: 4.8, distance: 0.5 },
-  { id: 2, name: 'Family Medical Clinic', city: 'New York', rating: 4.6, distance: 1.2 },
-  { id: 3, name: 'City Hospital - OB/GYN', city: 'New York', rating: 4.9, distance: 2.1 },
+const HOSPITALS = [
+  { id: 1, name: 'Apollo Hospitals Delhi', city: 'Delhi', area: 'Sarita Vihar', rating: 4.9, distance: 3.2 },
+  { id: 2, name: 'Fortis Memorial Research Institute', city: 'Delhi', area: 'Gurgaon', rating: 4.8, distance: 5.1 },
+  { id: 3, name: 'Max Healthcare - Saket', city: 'Delhi', area: 'Saket', rating: 4.7, distance: 2.8 },
+  { id: 4, name: 'Delhi Hospital for Women', city: 'Delhi', area: 'New Delhi', rating: 4.8, distance: 4.5 },
+  { id: 5, name: 'Medanta The Medicity', city: 'Delhi', area: 'Gurgaon', rating: 4.9, distance: 6.2 },
 ]
 
 export default function TrackerPage() {
   const [activeTab, setActiveTab] = useState('cycle')
-  const [searchCity, setSearchCity] = useState('')
+  const [searchCity, setSearchCity] = useState('Delhi')
   const [entries, setEntries] = useState({
     cycle: '',
     sleep: '',
@@ -245,7 +247,7 @@ export default function TrackerPage() {
                     <Search className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
                     <input
                       type="text"
-                      placeholder="City or pincode"
+                      placeholder="Delhi / Area"
                       value={searchCity}
                       onChange={(e) => setSearchCity(e.target.value)}
                       className="w-full pl-10 pr-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm"
@@ -256,32 +258,32 @@ export default function TrackerPage() {
                 {/* Filter Chips */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   <button className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full hover:bg-primary/20 transition-colors">
-                    OB/GYN
+                    Women's Health
                   </button>
                   <button className="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full hover:bg-muted/80 transition-colors">
-                    General
+                    Multi-speciality
                   </button>
                   <button className="px-3 py-1 bg-muted text-muted-foreground text-sm rounded-full hover:bg-muted/80 transition-colors">
-                    Urgent
+                    Emergency
                   </button>
                 </div>
 
-                {/* Clinic List */}
+                {/* Hospital List */}
                 <div className="space-y-4">
-                  {CLINICS.map((clinic) => (
-                    <div key={clinic.id} className="border border-border rounded-lg p-4 hover:bg-muted/50 transition-colors cursor-pointer">
-                      <h3 className="font-medium text-foreground mb-1">{clinic.name}</h3>
-                      <p className="text-sm text-muted-foreground mb-2">{clinic.city}</p>
+                  {HOSPITALS.map((hospital) => (
+                    <div key={hospital.id} className="border border-border rounded-lg p-4 hover:bg-muted/50 transition-colors cursor-pointer">
+                      <h3 className="font-medium text-foreground mb-1">{hospital.name}</h3>
+                      <p className="text-sm text-muted-foreground mb-2">{hospital.area}, {hospital.city}</p>
                       <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium text-primary">★ {clinic.rating}</span>
-                        <span className="text-xs text-muted-foreground">{clinic.distance} km</span>
+                        <span className="text-sm font-medium text-primary">★ {hospital.rating}</span>
+                        <span className="text-xs text-muted-foreground">{hospital.distance} km</span>
                       </div>
                     </div>
                   ))}
                 </div>
 
                 <button className="w-full mt-6 px-4 py-2 border border-border text-foreground font-semibold rounded-lg hover:bg-muted transition-colors text-sm">
-                  View All Clinics
+                  View All Hospitals
                 </button>
               </div>
             </div>
