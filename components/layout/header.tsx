@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 import { Menu, X, Globe, Moon, Sun } from 'lucide-react'
 import { useTheme } from '@/components/providers/theme-provider'
 
